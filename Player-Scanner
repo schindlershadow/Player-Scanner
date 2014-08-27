@@ -1,0 +1,39 @@
+scanner = peripheral.wrap("top")
+count = 0
+list = {"SchindlerShadow", "Musicology", "DevilDogMaster", "Xhail123", "ldjcool"}
+
+while true do
+  open = false
+  alarm = false
+  x = scanner.getPlayerNames()
+  
+  print("FOUND " ..#x.. " PLAYERS! Scan:"..count)
+  for i=1, #x do
+    print(x[i])
+    for z=1, #list do
+      if x[i] == list[z] then
+        open = true
+      else
+        --alarm = true
+      end
+    end
+  end
+  
+  if open == true then
+    rs.setOutput("bottom", true)
+  else
+    rs.setOutput("bottom", false)
+  end
+  
+  if alarm == true then
+    rs.setOutput("left", true)
+  else
+    rs.setOutput("left", false)
+  end
+  
+  print()
+  sleep(0.3)
+  term.clear()
+  term.setCursorPos(1,1)
+  count = count + 1
+end
